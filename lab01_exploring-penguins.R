@@ -21,3 +21,7 @@ row.names(data)
 
 #Show column names
 names(data)
+
+#Means of the data
+mean(data$year) #mean of year
+
