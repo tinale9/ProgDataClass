@@ -21,5 +21,3 @@ row.names(data)
 
 #Show column names
 names(data)
-
-
