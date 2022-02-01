@@ -24,4 +24,3 @@ names(data)
 
 #Means of the data
 mean(data$year) #mean of year
-
