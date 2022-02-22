@@ -20,25 +20,25 @@ plastic_waste <- read_csv(here::here("C:/Users/tinal/Documents/GitHub/ProgDataCl
 
 ### Exercise 1
 
-Remove this text, and add your answer for Exercise 1 here.
-
 ```{r plastic-waste-continent}
 #histogram 
 ggplot(data = plastic_waste)+
   aes(x = plastic_waste_per_cap) +
   geom_histogram(binwidth = .5)+
   facet_wrap(~continent)
+
 #density
 ggplot(data = plastic_waste)+
   aes(x = plastic_waste_per_cap) +
   facet_wrap(~continent)+
   geom_density(aes(y = after_stat(count)))
+
 #history and density
 ggplot(data = plastic_waste)+
   aes(x = plastic_waste_per_cap) +
   geom_histogram(binwidth = .5)+
   facet_wrap(~continent)+
-  geom_density(aes(y = after_stat(count)))
+  geom_density(aes(y = after_stat(count)), color = "blue" , alpha = 1)
  
   
 ```
@@ -46,7 +46,16 @@ ggplot(data = plastic_waste)+
 ### Exercise 2
 
 ```{r plastic-waste-density}
-# insert code here
+# boxplot
+ggplot(data = plastic_waste)+
+  aes(x = continent, y = plastic_waste_per_cap, fill=continent)+
+  geom_boxplot(alpha = .5)+
+ 
+
+
+
+```
+ 
 ```
 
 ### Exercise 3
