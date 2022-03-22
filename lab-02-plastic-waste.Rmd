@@ -124,26 +124,26 @@ ggplot(data = plastic_waste)+
 
 #Plastic Waste per Capita and Total Population
 
+ggplot(data = plastic_waste) +
+  aes(x = total_pop,
+      y = plastic_waste_per_cap) +
+  geom_point() +
+  geom_smooth()
 
 #Plastic Waste per Capita and Coastal Population
 
+ggplot(data = plastic_waste) +
+  aes(x = coastal_pop,
+      y = plastic_waste_per_cap) +
+  geom_point() +
+  geom_smooth()
 
+#Plastic waste per capita and coastal population has the stronger relationship with less variability
 ```
 
-### Exercise 4
+### Bonus
 
 Remove this text, and add your answer for Exercise 4 here.
 
-```{r plastic-waste-violin}
-# insert code here
-```
 
-### Exercise 5
 
-Remove this text, and add your answer for Exercise 5 here.
-
-```{r plastic-waste-mismanaged}
-# insert code here
-```
-
-### Exercise 6
