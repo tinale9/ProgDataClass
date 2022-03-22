@@ -115,9 +115,7 @@ ggplot(data = plastic_waste)+
   aes(x = plastic_waste_per_cap,
   y = mismanaged_plastic_waste_per_cap,
   color = continent)+
-   geom_point()+
-   scale_x_continuous(name = "Plastic Waste per Capita")+
-   scale_y_continuous(name = "Mismanaged Plastic Waste per Capita")
+   geom_point()
 
 #Europe has lower plastic waste per capita and mismanaged plastic waste per capita than the other continents. Asia has the highest mismanaged plastic waste per capita while North America has the highest plastic waste per capita.
 
