@@ -90,12 +90,11 @@ ggplot(data = plastic_waste)+
                      size = .2,
                      alpha = .5,
                      position = position_nudge (y = .2))
-
-```
- 
 ```
 
 ### Exercise 3
+
+```{plastic-waste-per-capita}
 
 ```{r plastic-waste-per-capita}
 #scatterplot
