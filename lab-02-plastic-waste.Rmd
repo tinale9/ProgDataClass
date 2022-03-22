@@ -13,7 +13,7 @@ library(tidyverse)
 ```
 
 ```{r load-data, message=FALSE}
-plastic_waste <- read_csv(here::here("C:/Users/tinal/Documents/GitHub/ProgDataClass/data/plastic-waste.csv"))
+plastic_waste <-read.csv(here::here("GitHub","ProgDataClass","plastic-waste.csv"))
 ```
 
 ## Exercises
@@ -22,23 +22,32 @@ plastic_waste <- read_csv(here::here("C:/Users/tinal/Documents/GitHub/ProgDataCl
 
 ```{r plastic-waste-continent}
 #histogram 
+
 ggplot(data = plastic_waste)+
   aes(x = plastic_waste_per_cap) +
+    facet_wrap(~continent)+
   geom_histogram(binwidth = .5)+
-  facet_wrap(~continent)
+  scale_x_continuous(name = "Plastic Waste per Capita")
 
 #density
 ggplot(data = plastic_waste)+
   aes(x = plastic_waste_per_cap) +
   facet_wrap(~continent)+
-  geom_density(aes(y = after_stat(count)))
+  geom_density()+
+   scale_x_continuous(name = "Plastic Waste per Capita")
 
 #history and density
 ggplot(data = plastic_waste)+
-  aes(x = plastic_waste_per_cap) +
+  aes(x = plastic_waste_per_cap, 
+      fill = continent,
+      color = continent) +
   geom_histogram(binwidth = .5)+
   facet_wrap(~continent)+
-  geom_density(aes(y = after_stat(count)), color = "blue" , alpha = 1)
+  geom_density(aes(y = after_stat(count)),
+               alpha = .1)+
+   scale_x_continuous(name = "Plastic Waste per Capita")
+
+#Fill and color were defined by the mapping aesthetic or aes() because we wanted to apply the color to both the graph and the chart. The alpha level was directly inputted into the geom since we only wanted to change the opacity for the density graph.
  
   
 ```
@@ -48,11 +57,39 @@ ggplot(data = plastic_waste)+
 ```{r plastic-waste-density}
 # boxplot
 ggplot(data = plastic_waste)+
-  aes(x = continent, y = plastic_waste_per_cap, fill=continent)+
-  geom_boxplot(alpha = .5)+
- 
+  aes(x = continent,
+      y = plastic_waste_per_cap,
+      fill = continent)+
+  geom_boxplot()
 
+# box plot w/ individual points
 
+ggplot (data = plastic_waste)+
+  aes(x = continent,
+      y = plastic_waste_per_cap,
+      fill = continent,
+      color = continent)+
+  geom_boxplot(color = "black")+
+  geom_jitter(height = .5,
+              alpha = .3)
+
+#boxplot w/density curve "raincloud plot"
+
+ggplot(data = plastic_waste)+
+  aes(x = continent,
+      y = plastic_waste_per_cap,
+      fill = continent,
+      color = continent)+
+  geom_jitter(height = .2)+
+   geom_boxplot(color = "black",
+                alpha = .5,
+                width = 1,
+                size = .5)+
+  ggdist::stat_slab (height = .5,
+                     color = "black",
+                     size = .2,
+                     alpha = .5,
+                     position = position_nudge (y = .2))
 
 ```
  
@@ -60,7 +97,38 @@ ggplot(data = plastic_waste)+
 
 ### Exercise 3
 
-Remove this text, and add your answer for Exercise 3 here.
+```{r plastic-waste-per-capita}
+#scatterplot
+
+ggplot(data = plastic_waste)+
+  aes(x = plastic_waste_per_cap,
+  y = mismanaged_plastic_waste_per_cap,
+  )+
+   geom_point()+
+   scale_x_continuous(name = "Plastic Waste per Capita")+
+   scale_y_continuous(name = "Mismanaged Plastic Waste per Capita")
+
+#There is an upward trend and positive relationship between plastic waste per capita and mismanaged plastic waste per capita.
+
+#scatterplot with color
+
+ggplot(data = plastic_waste)+
+  aes(x = plastic_waste_per_cap,
+  y = mismanaged_plastic_waste_per_cap,
+  color = continent)+
+   geom_point()+
+   scale_x_continuous(name = "Plastic Waste per Capita")+
+   scale_y_continuous(name = "Mismanaged Plastic Waste per Capita")
+
+#Europe has lower plastic waste per capita and mismanaged plastic waste per capita than the other continents. Asia has the highest mismanaged plastic waste per capita while North America has the highest plastic waste per capita.
+
+#Plastic Waste per Capita and Total Population
+
+
+#Plastic Waste per Capita and Coastal Population
+
+
+```
 
 ### Exercise 4
 
