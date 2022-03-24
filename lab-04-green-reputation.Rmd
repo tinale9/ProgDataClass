@@ -7,6 +7,7 @@ output: html_document
 
 ```{r package}
 library(tidyverse)
+library(ggplot2)
 
 ```
 
@@ -90,6 +91,8 @@ green_data <- green_data |>
       \(x) datawizard:: changescale(x, range = c(1,5), to c(0,100))
     )
   )
+
+print(green_data)
 ```
 
 ```{Question 4}
@@ -101,9 +104,14 @@ ggplot(green_data)+
   geom_histogram()
 
 #scatterplot with line trend
-ggplot(green_data)+
+green_data|>
+  drop_na(student)
+
+green_data|>
+  filter( !is.na(student))|>
+ggplot()+
   aes(x = open_total_pomp, y = green_total_pomp, color = factor(student))+
   geom_point()+
-  geom_smooth()
+  geom_smooth(method = "lm")
  
 
