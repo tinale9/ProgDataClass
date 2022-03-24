@@ -1,0 +1,97 @@
+---
+title: "lab-03-explore-gapminder"
+author: "Truc Le"
+date: "3/23/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(gapminder)
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+``` {exercise 1 basic dplyr}
+#1.1
+gapminder |>
+  filter(country == "Vietnam" | country == "Canada" | country == "Japan")
+
+#1.2
+gapminder |>
+  filter(country == "Vietnam" | country == "Canada" | country == "Japan") |>
+  select(country, gdpPercap)
+
+#1.3
+change_in_life_exp <- gapminder|>
+  arrange(year)|>
+  group_by(country)|>
+  mutate(change_in_life_exp = lifeExp - lag(lifeExp))|>
+ 
+  
+  
+#1.4
+  gapminder|>
+  group_by(country)|>
+  arrange(country)|>
+  select(country,gdpPercap)|>
+    filter(gdpPercap == max(gdpPercap))
+
+#1.5
+ggplot(gapminder |>
+  filter(country == "Canada"))+
+  aes(x = lifeExp,
+      y = gdpPercap)+
+  geom_point()+
+  scale_y_continuous(trans = 'log')
+
+```{exercise 2}
+
+#2.1
+
+gapminder|>
+  summarize(mean_lifeExp = mean(lifeExp, na.rm = TRUE),
+            sd_lifeExp = sd(lifeExp, na.rm = TRUE),
+            mean_pop = mean(pop, na.rm = TRUE),
+            sd_pop = sd(pop, na.rm = TRUE))
+
+#2.2
+
+gapminder|>
+  select(country,lifeExp)|>
+  group_by(country)|>
+  summarize(sample_size = n(),
+            mean_lifeExp = mean(lifeExp, na.rm = TRUE),
+            sd_lifeExp = sd(lifeExp, na.rm = TRUE),
+            median_lifeExp = median(lifeExp, na.rm = TRUE))
+            
+ggplot(gapminder|>
+          select(country,lifeExp)|>
+         filter(country == "Japan"|
+                country =="Canada"|
+                country=="China"))+
+        aes(x = country,
+            y = lifeExp,
+            color = country)+
+          geom_point()
+
+#scatterplot
+
+ggplot(gapminder|>
+          select(country,lifeExp)|>
+         filter(country == "Japan"|
+                country =="Canada"|
+                country=="China"))+
+        aes(x = country,
+            y = lifeExp,
+            color = country,
+            fill = country)+
+          geom_boxplot(color = "black")+
+#boxplot 
+
+#BONUS
+filter(gapminder, country == c("Rwanda", "Afghanistan"))
+
+#This code does not work.
+            
