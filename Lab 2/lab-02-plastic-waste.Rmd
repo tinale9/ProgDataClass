@@ -14,7 +14,7 @@ library(tidyverse)
 ```
 
 ```{r load-data, message=FALSE}
-plastic_waste <-read.csv(here::here("C:/Users/tinal/Documents/GitHub/ProgDataClass/data/plastic-waste.csv"))
+plastic_waste <-read.csv(here::here("GitHub","ProgDataClass","data","plastic-waste.csv"))
 ```
 
 ## Exercises
