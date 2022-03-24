@@ -8,5 +8,5 @@ My name is Tina Le and I am a senior studying Psychology at USF. Here are some *
 1. I have two pets (a cat and a dog)
 1. I play video games in my free time
 1. I love baking
-1. I am an RA for Dr.Goodman's and Dr.Karver's Lab (woo!)
+
 
