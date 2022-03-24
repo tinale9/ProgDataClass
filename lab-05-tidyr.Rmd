@@ -1,0 +1,26 @@
+---
+title: "lab-05A-tidy"
+author: "Truc Le"
+date: "3/23/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+lotr  <- read_csv("https://raw.githubusercontent.com/jennybc/lotr-tidy/master/data/lotr_tidy.csv") |> 
+  rename(Species = Race)
+
+
+#Shorten Data Frame
+(lotr_wide <- lotr |> 
+  pivot_wider(id_cols = c(Film, Gender), 
+              names_from =  Species, 
+              values_from = Words))
+
+#Lengthen Data Frame
+lotr_wide |> 
+  pivot_longer(cols = Elf:Man, 
+               names_to  = "Species", 
+               values_to = "Words")
+```
+
